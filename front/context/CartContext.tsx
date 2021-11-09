@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FC, useContext, useState } from 'react';
 import { BasicDoc, Hit } from "react-instantsearch-core";
 import axios from "axios"
+import { productExistsInBasket } from 'helpers/productExistsInBasket';
 
 export interface ICartProvider {
     products : Set<Hit<BasicDoc>>;
@@ -19,8 +20,8 @@ export const CartProvider : FC = (props) => {
 
 
     // @ts-ignore
-    const setCartContent = (newProduct : Hit<BasicDoc>) => setCart((products) => {        
-        if (!products.has(newProduct)) {
+    const setCartContent = (newProduct : Hit<BasicDoc>) => setCart((products) => {     
+        if (!productExistsInBasket(products, newProduct.objectID)) {
             setCart(previousState => new Set([...(products as any), newProduct]))
 
             // axios.post(`http://localhost:4000/${uuid}`, {id:newProduct.objectID, quantity : 1})

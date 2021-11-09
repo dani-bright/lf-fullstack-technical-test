@@ -19,8 +19,7 @@ export default function Home() {
     async function createCart() {
       const created = await axios.post(`http://localhost:4000/cart`)
       const cart = await axios.get(`http://localhost:4000/cart/${created.data.id}`)
-      setCartUuid(created.data.id)
-      
+      setCartUuid(created.data.id)      
     }    
     createCart();
     

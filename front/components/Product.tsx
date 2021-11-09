@@ -1,4 +1,5 @@
 import { useCart } from 'context/CartContext';
+import { productExistsInBasket } from 'helpers/productExistsInBasket';
 import { FC, memo } from 'react';
 import { BasicDoc, Hit } from "react-instantsearch-core";
 import styles from "../styles/Home.module.css";
@@ -11,7 +12,7 @@ export const Product : FC<{ hit: Hit<BasicDoc>; }> = memo(({hit}) => {
     setCartContent(hit);
   }
 
-  const buttonText = products.has(hit) ? "retirer" : "ajouter";
+  const buttonText = productExistsInBasket(products, hit.objectID) ? "retirer" : "ajouter";
 
     return (
       <div className={styles.card}>
