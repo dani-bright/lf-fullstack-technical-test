@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import algoliasearch from "algoliasearch/lite";
-import { InstantSearch } from "react-instantsearch-dom";
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import { Product} from "components/Product";
 
 const searchClient = algoliasearch(
   "latency",
@@ -21,9 +22,8 @@ export default function Home() {
           Welcome to La Fourche Frontend Technical Test v2 !
         </h1>
         <InstantSearch indexName="bestbuy" searchClient={searchClient}>
-          {/* ##################################
-              Your instantsearch code goes here.
-              ################################## */}
+        <SearchBox />
+        <Hits hitComponent={Product} />
         </InstantSearch>
       </main>
 

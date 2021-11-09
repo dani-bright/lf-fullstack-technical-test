@@ -7,6 +7,22 @@
   align-items: center;
 }
 
+.menu{
+  display: flex;
+  position: fixed;
+}
+
+.menu > *{
+  margin: 0 5px;
+}
+
+.menu li{
+  list-style: none;
+  display: block;
+  background: #0070f3;
+  padding: 2px 5px;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -112,6 +128,16 @@
 
 .logo {
   height: 1em;
+}
+
+.button{
+  cursor: pointer;
+  background: #0070f3;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2px 5px;
 }
 
 @media (max-width: 600px) {
